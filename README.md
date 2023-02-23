@@ -1,3 +1,9 @@
+# FireBase Config
+
+For security reasons firebase.config.js is ignored by the repo. To configure Firebase for this project, set up 
+your application at firebase.google.com, then copy the app specific keys into firebase.config.sample.js and rename it 
+to firebase.config.js. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
