@@ -15,7 +15,7 @@ const pathMatchRoute = (route) => {
 }
 
   return (
-    <footer class='navbar'>
+    <footer className='navbar'>
       <nav className="navbarNav">
         <ul className="navbarListItems">
           <li className="navbarListItem" onClick={() => navigate('/')}>
