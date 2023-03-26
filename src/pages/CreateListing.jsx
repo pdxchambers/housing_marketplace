@@ -6,6 +6,7 @@ import {
     uploadBytesResumable,
     getDownloadURL
 } from 'firebase/storage'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import {db} from '../firebase.config'
 import { useNavigate } from 'react-router-dom'
 import Spinner from '../components/Spinner'
@@ -95,7 +96,7 @@ const CreateListing = () => {
     } else {
         geolocation.lat = latitude
         geolocation.lng = longitude
-        location = address
+        
     }
 
     //store images in firebase
@@ -141,8 +142,23 @@ const CreateListing = () => {
         toast.error('Images not uploaded.')
         return
     })
-    console.log(imageUrls)
+    
+    const formDataCopy = {
+        ...formData,
+        imageUrls,
+        geolocation,
+        timestamp: serverTimestamp()
+    }
+    formDataCopy.location = address
+    delete formDataCopy.images
+    delete formDataCopy.address
+    !formDataCopy.offer && delete formDataCopy.discountedPrice
+
+    const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
+
     setLoading(false)
+    toast.success('Listing saved!')
+    navigate(`/category/${formDataCopy.type}/${docRef.id}`)
   }
 
   const onMutate = (e) => {
