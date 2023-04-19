@@ -151,14 +151,14 @@ function Profile() {
         <>
           <p className="listingsText">Your Listings</p>
           <ul className="listingsList">
-            {listings.map((listing) => (
+            {listings.map((listing) => {
               <ListingItem 
                 key={listing.id} 
                 listing={listing.data} 
                 id={listing.id}
                 onDelete={() => onDelete(listing.id)}
               />
-            ))}
+            })}
           </ul>
         </>
       )}
