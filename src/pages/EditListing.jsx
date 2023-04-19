@@ -15,6 +15,7 @@ import {toast} from 'react-toastify'
 import {v4 as uuidv4} from 'uuid'
 
 const EditListing = () => {
+  // eslint-disable-next-line
   const [geoLocationEnabled, setGeoLocationEnabled] = useState(true)
   const [loading, setLoading] = useState(false)
   const [listing, setListing] = useState(false)
@@ -149,6 +150,8 @@ const EditListing = () => {
                         break;
                     case 'running':
                         console.log('Upload is running');
+                        break;
+                    default:
                         break;
                     }
                 }, 
